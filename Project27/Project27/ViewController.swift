@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         let context = UIGraphicsGetCurrentContext()
         
         // Create rectangle
-        let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
+        let rectangle = CGRect(x: 5, y: 5, width: 502, height: 502)
         // Set fill color to red(convert UIColor to CGColor)
         CGContextSetFillColorWithColor(context, UIColor.redColor().CGColor)
         // Set stroke color to black(convert UIColor to CGColor)
