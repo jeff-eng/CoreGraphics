@@ -29,6 +29,8 @@ class ViewController: UIViewController {
             drawRectangle()
         case 1:
             drawCircle()
+        case 2:
+            drawCheckerboard()
         default:
             break
         }
@@ -102,5 +104,35 @@ class ViewController: UIViewController {
         imageView.image = img
     }
     
+    func drawCheckerboard() {
+        // Create context - specify dimensions, opacity, and scale
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 512, height: 512), false, 0)
+        // Pull out a reference to the current context
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, UIColor.blackColor().CGColor)
+        
+        for row in 0 ..< 8 {
+            for col in 0 ..< 8 {
+                if row % 2 == 0 {
+                    if col % 2 == 0 {
+                    CGContextFillRect(context, CGRect(x: col * 64, y: row * 64, width: 64, height: 64))
+                    }
+                } else {
+                    if col % 2 == 1 {
+                        CGContextFillRect(context, CGRect(x: col * 64, y: row * 64, width: 64, height: 64))
+                    }
+                }
+            }
+        }
+        
+        // Get contents of the drawing as a UIImage
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        // End drawing
+        UIGraphicsEndImageContext()
+        
+        // Set the image created using Core Graphics as the image view
+        imageView.image = img
+    }
 }
 
